@@ -1,8 +1,7 @@
-package test;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
@@ -23,7 +22,7 @@ public class Login extends BaseClassOne  {
 		
 		//openbrowser();
 		Properties prop = new Properties();
-		FileInputStream fis = new FileInputStream("C:\\Users\\Arun1919\\git\\Health4All\\Health4All\\src\\datadriver.properties");
+		InputStream fis = this.getClass().getClassLoader().getResourceAsStream("datadriver.properties");
 		prop.load(fis);
 		driver.findElement(By.cssSelector("input[name='username']")).sendKeys(prop.getProperty("username"));
 		driver.findElement(By.cssSelector("input[name='password']")).sendKeys(prop.getProperty("password"));
